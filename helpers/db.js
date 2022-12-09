@@ -29,16 +29,17 @@ const saveData = (data) => {
     //BORRAR DE LA DATA
     const deleteDataDB = (id) => {
     const dbData = fs.readFileSync(archivo, { encoding: "utf-8" });//LEER ARCHIVO
-    if (!dbData == "") {
+    if (!dbData == "") {//SI ES DIFERENTE A VACIO ESTO VA HACER IGUAL A MI ARRAY(INTER)
         // TRAER LA DATA
         const dataObj = JSON.parse(dbData);
         inter = dataObj;
     }
-    const nuevadata = inter.filter((obj) => {
-        return obj.id != id;
+    const nuevadata = inter.filter((obj) => {//SI NO LO VA ALMACENAR EN UNA NUEVA CONST
+    //FILTER RECORRE MI ARRAY Y ME RETORNA UNO NUEVO CON LOS DATOS QUE PASEN LA CONDICION
+        return obj.id != id;//SI LOS ID SON DIFERENTES
     });
 
-    fs.writeFileSync(archivo, JSON.stringify(nuevadata));
+    fs.writeFileSync(archivo, JSON.stringify(nuevadata));//LEER EL NUEVO ARRAY
     };
 
     module.exports = {

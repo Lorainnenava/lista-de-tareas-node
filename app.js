@@ -25,16 +25,17 @@ const main = async () => {
             break;
             /*LISTA DE TAREAS*/
             case '2':
-                console.log(tareas.listadoArr);
+                console.clear();
+                tareas.mostrarTareas();//MUESTRA LAS TAREAS
                 break;
             /*BORRAR TAREAS*/
             case '3':
                 const array = tareas.traerDataFromDB();
-                const deleteID = await menuBorrar(array);
+                const deleteID = await menuBorrar(array);//ESPERA RESPUESTA DEL MENU BORRAR
                 const ok = await confirm(
                 `'¿ Desea ${"borrar".red} la ${"tarea".green}? '`
                 );//MENSAJE DE CONFIRMACION
-                ok ? tareas.deleteData(deleteID) : false;
+                ok ? tareas.deleteData(deleteID) : false;//ELIMINA
                 break;
             /*SALIR*/
             case '0':

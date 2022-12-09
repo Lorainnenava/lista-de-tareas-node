@@ -33,29 +33,27 @@ const Tarea= require('./tarea');
             saveData(this._listado[tarea.id]);
         }
 
+        //MOSTRAR LA TAREA
         mostrarTareas() {
-            const dataObj = showData();
-            let cont = 1;
+            const dataObj = showData();//MOSTRAR LO QUE HAY EN LA DATA
+            let cont = 1;//ENUMERAR LAS TAREAS
             let lastfecha = " ";
-            for (const property in dataObj) {
+            for (const property in dataObj) {//RECORRE CADA ITEM EN LA DATA
             const { desc, fecha } = dataObj[property];
 
-            lastfecha != fecha
+            lastfecha != fecha//SI LAS FECHAS SON DIFERENTES LAS SEPARA
                 ? console.log(
-                    `${"------------------------------------------------------".magenta}`)
+                    `${"------------------------------------------------------".blue}`)
                 : false;
-            console.log(
-                `${cont.toString().blue}${")".blue}  ${desc} ${
-                "hecho".green
-                } el : ${fecha}`
-            );
-            cont++;
-            lastfecha = fecha;
+            console.log(//SI SON IGUALES LAS VA A NUMERAR
+                `${cont.toString().blue} ${")".blue} ${desc} ${"hecho".green} el : ${fecha}`);
+            cont++;//EL CONTADOR SE VAYA AUMENTANDO
+            lastfecha = fecha;//LA FECHA
             }
         }
-        traerDataFromDB() {
-            // devuelve un array de la data , para luego mandarlo a menuquirer y se graficada para borrar
 
+        traerDataFromDB() {
+            //DEVUELVE UN ARRAY DE LA DATA 
             const dataObj = showData();
             let array = [];
 
@@ -65,7 +63,7 @@ const Tarea= require('./tarea');
             return array;
         }
         deleteData(id) {
-            deleteDataDB(id);
+            deleteDataDB(id);//ELIMINA DE LA DATA
         }
         }
 module.exports = Tareas;
