@@ -1,4 +1,4 @@
-const http= require('http');
+/* const http= require('http');
 const host='localhost';
 const port= 8000;
 const json= require('./data.json');
@@ -12,7 +12,7 @@ const json= require('./data.json');
 
 
 const servidor= http.createServer(requestListener);
-servidor.listen(port, host,()=>{
+servidor.listen(port, host,() =>{
     console.log(`listening on port http://${host}:${port}`)
 })
-module.exports = servidor;
+module.exports = servidor; */
