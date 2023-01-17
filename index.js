@@ -1,22 +1,21 @@
 const express = require("express");
 const app = express();
 const port = 8090;
-const fs = require("fs");
 const json = require("./data.json");
+const editarTarea = require("./models/list-edit-router");
+const agregarTarea = require("./models/list-agregar-router");
+const eliminarTarea = require("./models/list-eliminar-router");
+const incompletas = require("./models/list-incompletas");
+const completadas = require("./models/list-completadas");
+
+app.use("/editar", editarTarea);
+app.use("/agregar", agregarTarea);
+app.use("/eliminar", eliminarTarea);
+app.use("/completadas", completadas);
+app.use("/incompletas", incompletas);
 
 app.get("/", function (req, res) {
   res.json(json);
-  res.end();
-});
-
-app.post("/", express.json(), function (req, res) {
-  const datos = req.body;
-  json.push(datos);
-  fs.writeFileSync("data.json", JSON.stringify(json), function (err) {
-    if (err) throw err;
-    console.log("updated");
-  });
-  res.send("recibido");
   res.end();
 });
 
