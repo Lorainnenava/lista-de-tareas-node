@@ -1,8 +1,11 @@
 const express = require("express");
 const editarTarea = express.Router();
 const fs = require("fs");
+const {errores, validacion}= require('../middleware/middleware')
 
-editarTarea.put("/:id", express.json(),function (req, res) {
+editarTarea.use(express.json())
+
+editarTarea.put("/:id", errores, validacion,function (req, res) {
     const datos = JSON.parse(fs.readFileSync("data.json", "utf-8"));
     const { id } = req.params;
     datos.forEach((task) => {
