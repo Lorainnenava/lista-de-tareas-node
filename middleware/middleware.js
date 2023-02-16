@@ -46,7 +46,7 @@ const parametros = (req, res, next) => {
 };
 
 //VALIDAR URL
-const validarUrl = (req, res, next) => {
+/* const validarUrl = (req, res, next) => {
   const url= req.originalUrl
   const arrayUrl= url.split("/");
   let validate;
@@ -64,12 +64,12 @@ const validarUrl = (req, res, next) => {
     }
     next()
   }
-};
+}; */
 
 module.exports = {
   errores,
   validacion,
   verificacion,
   parametros,
-  validarUrl,
+/*   validarUrl, */
 };

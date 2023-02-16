@@ -6,12 +6,11 @@ const editarTarea = require("./models/list-edit-router");
 const agregarTarea = require("./models/list-agregar-router");
 const eliminarTarea = require("./models/list-eliminar-router");
 const estado = require("./models/list-view-router");
-const { verificacion  , validarUrl } = require("./middleware/middleware");
-
+const { verificacion /*  , validarUrl  */} = require("./middleware/middleware");
 
 
 app.use(verificacion);
-app.use(validarUrl);
+/* app.use(validarUrl); */
 app.use("/editar", editarTarea);
 app.use("/agregar", agregarTarea);
 app.use("/eliminar", eliminarTarea);
@@ -19,6 +18,14 @@ app.use("/estado", estado);
 
 app.get("/", function (req, res) {
   res.json(json);
+  res.end();
+});
+
+//VER TAREA POR EL ID
+app.get("/:id", function (req, res) {
+  const {id}= req.params;
+  const filtracion= json.filter((item)=> item.id == id)
+  res.json(filtracion);
   res.end();
 });
 
